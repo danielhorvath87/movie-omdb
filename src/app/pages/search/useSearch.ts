@@ -42,6 +42,7 @@ const useSearch = () => {
 
   const setPage = (value: number) => {
     dispatch({ type: 'search/page', payload: value });
+    getList();
   };
 
   const getList = () => {

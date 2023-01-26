@@ -1,6 +1,5 @@
 import { Grid, Stack } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
-import { useEffect } from 'react';
 import Avatar from '../components/Avatar';
 import Button from '../components/Button';
 import ButtonFavorite from '../components/ButtonFavorite';
@@ -14,12 +13,6 @@ import useSearch from './search/useSearch';
 const Search = (): JSX.Element => {
   const search = useSearch();
   const movie = useMovie();
-
-  useEffect(() => {
-    search.getList();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search.data.page]);
 
   const onKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
     event.key === 'Enter' && search.getList();

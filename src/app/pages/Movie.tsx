@@ -22,7 +22,7 @@ const Movie = (): JSX.Element => {
   return (
     <>
       <Grid container spacing={1} justifyContent={'space-between'}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <Typography variant="h1" mb={3}>
             {result['Title']} <ButtonFavorite movie={result} />
           </Typography>
@@ -30,7 +30,7 @@ const Movie = (): JSX.Element => {
             {result['Year']} | {result['Rated']} | {result['Runtime']}
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={'auto'} alignItems={'center'}>
           <ImdbRating rating={result['imdbRating']} votes={result['imdbVotes']} />
         </Grid>
       </Grid>

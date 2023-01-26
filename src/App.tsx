@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { HelmetProvider } from 'react-helmet-async';
+import { Toaster } from 'react-hot-toast';
 import { useRoutes } from 'react-router-dom';
 import ScrollToTop from './app/components/ScrollToTop';
 import SeoTags from './app/components/SeoTags';
@@ -19,6 +20,7 @@ const App = (): JSX.Element => {
         <ScrollToTop />
        {renderRoutes}
       </ThemeProvider>
+      <Toaster />
     </HelmetProvider>
   );
 };

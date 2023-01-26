@@ -7,7 +7,7 @@ Oxygen, Ubuntu, Cantarell, 'Open Sans',
 
 const MuiTypography = {
   h1: {
-    fontSize: "2.4rem",
+    fontSize: "2.0rem",
     fontWeight: 700,
     color: colors.grey["900"],
     fontFamily: fontFamily,
