@@ -63,14 +63,9 @@ const useSearch = () => {
       });
   };
 
-  const getItem = (imdbID: string) => {
-    console.log(imdbID)
-  };
-
   return {
     data,
     getList,
-    getItem,
     setQuery,
     setPage,
   };
