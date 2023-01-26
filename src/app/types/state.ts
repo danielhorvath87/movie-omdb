@@ -5,7 +5,8 @@ export interface State {
   search: {
     result: TypeResult | null,
     page: ISearch['page'],
-    query: ISearch['query']
+    query: ISearch['query'],
+    loading: boolean
   },
   movie: {
     result: MovieDetail | null

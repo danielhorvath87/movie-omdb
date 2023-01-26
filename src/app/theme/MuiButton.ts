@@ -3,7 +3,9 @@ import { colors } from "@mui/material";
 const MuiButton = {
   styleOverrides: {
     text:{
-      padding: 0
+      padding: 0,
+      textDecoration: 'underline',
+      fontWeight: 600
     },
     containedPrimary: {
       color: '#000',
@@ -23,15 +25,7 @@ const MuiButton = {
       }
     },
     contained: {
-      //color: '#fff',
       boxShadow: 'none',
-
-      '& .MuiButton-startIcon': {
-        '& svg': {
-         stroke: '#fff',
-          color: '#fff',
-        },
-      },
     },
   },
 };

@@ -1,4 +1,5 @@
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { faHeart as heart2 } from '@fortawesome/free-regular-svg-icons';
 import {
   faAddressCard,
   faCircleUser,
@@ -6,15 +7,14 @@ import {
   faEyeSlash,
   faFloppyDisk,
   faGauge,
-  faGear,
-  faHome,
+  faGear, faHeart as heart1, faHome,
   faIdCardClip,
   faLayerGroup,
   faPenToSquare,
   faPlus,
   faRectangleList,
   faRightFromBracket,
-  faRotate, faSearch, faSwatchbook,
+  faRotate, faSearch, faStar, faSwatchbook,
   faTrash,
   faUnlockKeyhole,
   faUsersGear,
@@ -65,6 +65,11 @@ const Icon: FC<{ icon: string; size?: SizeProp; color?: string }> = ({
       {icon.includes('show') && <FontAwesomeIcon icon={faEye} color={color} />}
       {icon.includes('hidden') && <FontAwesomeIcon icon={faEyeSlash} color={color} />}
       {icon.includes('search') && <FontAwesomeIcon icon={faSearch} color={color} />}
+
+      {icon.includes('heart1') && <FontAwesomeIcon icon={heart1} color={color} />}
+      {icon.includes('heart2') && <FontAwesomeIcon icon={heart2} color={color} />}
+      {icon.includes('star') && <FontAwesomeIcon icon={faStar} color={color} />}
+
     </>
   );
 };

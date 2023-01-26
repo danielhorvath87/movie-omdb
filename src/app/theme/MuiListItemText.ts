@@ -4,15 +4,15 @@ const MuiListItemText = {
   styleOverrides: {
     primary: {
       fontWeight: 600,
-      fontSize: '0.9rem',
-      lineHeight: '2rem',
-      color: colors.grey['900'],
+      fontSize: "1.2rem",
+      color: colors.grey["900"],
+      marginBottom: '0.5rem'
     },
     secondary: {
       fontWeight: 400,
-      fontSize: '1.6rem',
-      lineHeight: '1.6rem',
-      color: colors.grey['900'],
+      fontSize: "1.2rem",
+      lineHeight: '1.4rem',
+      color: colors.grey["900"],
     },
   },
 };

@@ -3,6 +3,7 @@ import { GridColDef } from '@mui/x-data-grid';
 import { useEffect } from 'react';
 import Avatar from '../components/Avatar';
 import Button from '../components/Button';
+import ButtonFavorite from '../components/ButtonFavorite';
 import DataGrid from '../components/DataGrid';
 import TextField from '../components/TextField';
 import Typography from '../components/Typography';
@@ -16,7 +17,13 @@ const Search = (): JSX.Element => {
 
   useEffect(() => {
     search.getList();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.data.page]);
+
+  const onKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    event.key === 'Enter' && search.getList();
+  };
 
   const columns: GridColDef[] = [
     {
@@ -36,6 +43,11 @@ const Search = (): JSX.Element => {
       sortable: false,
       disableColumnMenu: true,
       width: 500,
+      renderCell: (params) => (
+        <Button variant={'text'} onClick={() => movie.getItem(params.row.imdbID)}>
+          {params.value}
+        </Button>
+      ),
     },
     {
       field: 'Type',
@@ -64,6 +76,15 @@ const Search = (): JSX.Element => {
       disableColumnMenu: true,
       width: 100,
     },
+    {
+      field: '',
+      headerName: 'Favorite',
+      hideable: false,
+      hideSortIcons: true,
+      sortable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => <ButtonFavorite movie={params.row} />,
+    },
   ];
 
   return (
@@ -75,6 +96,7 @@ const Search = (): JSX.Element => {
         <Stack spacing={1} direction={'row'}>
           <TextField
             onChange={(event) => search.setQuery(event.target.value)}
+            onKeyUp={(event: React.KeyboardEvent<HTMLDivElement>) => onKeyUp(event)}
             wait={500}
             type={'search'}
             placeholder={'Search'}
@@ -87,10 +109,10 @@ const Search = (): JSX.Element => {
       </Grid>
       <Grid item xs={12}>
         <DataGrid
+          loading={search.data.loading}
           getRowId={() => Math.random()}
           columns={columns}
           rows={search.data.result?.Search || []}
-          onRowClick={(param) => movie.getItem(param.row.imdbID)}
           pagination
           paginationMode="server"
           rowCount={search.data?.result?.totalResults || 0}

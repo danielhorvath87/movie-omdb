@@ -1,15 +1,17 @@
 import { Grid } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import Avatar from '../components/Avatar';
+import Button from '../components/Button';
+import ButtonFavorite from '../components/ButtonFavorite';
 import DataGrid from '../components/DataGrid';
 import Typography from '../components/Typography';
 import useFavorites from './favorites/useFavorites';
+import useMovie from './movie/useMovie';
 import { Movie } from './search/search';
-import useSearch from './search/useSearch';
 
 const Favorites = (): JSX.Element => {
-  const search = useSearch();
   const favorites = useFavorites()
+  const movie = useMovie();
 
   const columns: GridColDef[] = [
     {
@@ -28,7 +30,12 @@ const Favorites = (): JSX.Element => {
       hideSortIcons: true,
       sortable: false,
       disableColumnMenu: true,
-      width: 500
+      width: 500,
+      renderCell: (params) => (
+        <Button variant={'text'} onClick={() => movie.getItem(params.row.imdbID)}>
+          {params.value}
+        </Button>
+      ),
     },
     {
       field: 'Type',
@@ -57,6 +64,16 @@ const Favorites = (): JSX.Element => {
       disableColumnMenu: true,
       width: 100,
     },
+    {
+      field: '',
+      headerName: 'Favorite',
+      hideable: false,
+      hideSortIcons: true,
+      sortable: false,
+      disableColumnMenu: true,
+      renderCell: (params) => <ButtonFavorite movie={params.row} />
+      
+    }
   ];
 
   return (
@@ -70,12 +87,11 @@ const Favorites = (): JSX.Element => {
           getRowId={() => Math.random()}
           columns={columns}
           rows={favorites.data?.result || []}
-          onRowClick={(param) => search.getItem(param.row.imdbID)}
           pagination
           rowCount={favorites.data?.result?.length || 0}
-          rowsPerPageOptions={[5, 25, 50, 75, 100]}
+          rowsPerPageOptions={[]}
           autoHeight={true}
-          pageSize={25}
+         // pageSize={25}
         />
       </Grid>
     </Grid>

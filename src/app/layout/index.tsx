@@ -14,7 +14,7 @@ const Layout: FC<Props> = ({ children }) => {
       <CssBaseline />
 
       <AppBar position="fixed" elevation={0}>
-        <Container maxWidth={"lg"} sx={{ py: 1 }}>
+        <Container maxWidth={"lg"} sx={{ py: 3 }}>
           <Grid
             container
             justifyContent={"space-between"}

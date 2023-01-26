@@ -19,8 +19,8 @@ export const movieSlice = createSlice({
   },
 });
 
-const useSearch = () => {
-  const navigate = useNavigate()
+const useMovie = () => {
+  const navigate = useNavigate();
   const err = useErrorHandle();
   const axios = axiosInstance();
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const useSearch = () => {
           type: 'movie/result',
           payload: _response.data,
         });
-        navigate(`/movie/${imdbID}`, { state: { slug: 'movie', imdbID: imdbID } })
+        navigate(`/movie/${imdbID}`, { state: { slug: 'movie', imdbID: imdbID } });
       })
       .catch((error) => {
         err.handle(error);
@@ -47,4 +47,4 @@ const useSearch = () => {
   };
 };
 
-export default useSearch;
+export default useMovie;

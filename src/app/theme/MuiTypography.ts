@@ -7,10 +7,11 @@ Oxygen, Ubuntu, Cantarell, 'Open Sans',
 
 const MuiTypography = {
   h1: {
-    fontSize: "1.8rem",
+    fontSize: "2.4rem",
     fontWeight: 700,
     color: colors.grey["900"],
     fontFamily: fontFamily,
+    margin: '0 !important',
   },
   h2: {
     fontSize: "1.5rem",
@@ -38,11 +39,13 @@ const MuiTypography = {
     color: colors.grey["900"],
   },
   body1: {
-    fontSize: "0.9rem",
+    fontSize: "1rem",
+    lineHeight: '1.2rem',
     color: colors.grey["900"],
   },
   body2: {
-    fontSize: "0.9rem",
+    fontSize: "1rem",
+    lineHeight: '1.2rem',
     color: colors.grey["900"],
   },
 };

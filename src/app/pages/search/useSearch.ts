@@ -8,12 +8,16 @@ const initialState: State['search'] = {
   result: null,
   page: 0,
   query: '',
+  loading: false
 };
 
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
+    loading: (state, action) => {
+      state.loading = action.payload;
+    },
     result: (state, action) => {
       state.result = action.payload;
     },
@@ -41,6 +45,8 @@ const useSearch = () => {
   };
 
   const getList = () => {
+    dispatch({ type: 'search/loading', payload: true })
+
     axios
       .get(`/?s=${data.query}&page=${data.page + 1}&apikey=${process.env.REACT_APP_API_KEY}`)
       .then((_response) => {
@@ -48,9 +54,11 @@ const useSearch = () => {
           type: 'search/result',
           payload: { ..._response.data, ['totalResults']: parseInt(_response.data.totalResults) },
         });
+        dispatch({ type: 'search/loading', payload: false })
       })
       .catch((error) => {
         err.handle(error);
+        dispatch({ type: 'search/loading', payload: false })
       });
   };
 
